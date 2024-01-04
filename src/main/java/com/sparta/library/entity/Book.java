@@ -23,5 +23,6 @@ public class Book {
 
     @Column(name = "regidate", nullable = false,length = 20)
     private String regidate;
-}
 
+
+}
