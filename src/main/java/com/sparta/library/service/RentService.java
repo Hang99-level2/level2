@@ -4,7 +4,9 @@ import com.sparta.library.dto.RentRequestDto;
 import com.sparta.library.entity.Rent;
 import com.sparta.library.repository.RentRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RentService {
     private final RentRepository rentRepository;
 
@@ -12,8 +14,15 @@ public class RentService {
         this.rentRepository = rentRepository;
     }
     @Transactional
-    public Long rent_date(Long id, RentRequestDto requestDto){
+    public Long rentbook(Long id, RentRequestDto requestDto){
         Rent rent = findRent(id);
+        rent.rentbook(requestDto);
+        return id;
+    }
+    @Transactional
+    public Long returnbook(Long id, RentRequestDto requestDto){
+        Rent rent = findRent(id);
+        rent.returnbook(requestDto);
         return id;
     }
 
