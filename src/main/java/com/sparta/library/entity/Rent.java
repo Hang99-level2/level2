@@ -14,18 +14,18 @@ public class Rent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
 
     @Column(name = "status",nullable = false)
     private String status;
     @Column(name = "rent_date",nullable = false)
-    private String rent_date;
+    private String rentDate;
     @Column(name = "return_date",nullable = false)
-    private String return_date;
+    private String returnDate;
 }

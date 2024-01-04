@@ -6,19 +6,19 @@ import lombok.Getter;
 @Getter
 public class RentResponseDto {
     private int id;
-    private int user_id;
-    private int book_id;
+    private int username;
+    private int bookId;
 
     private String status;
-    private String rent_date;
-    private String return_date;
+    private String rentDate;
+    private String returnDate;
 
     public RentResponseDto(Rent rent) {
         this.id = rent.getId();
-        this.user_id = rent.getUser().getId();
-        this.book_id = rent.getBook().getId();
+        this.username = rent.getUser().getId();
+        this.bookId = rent.getBook().getId();
         this.status = rent.getStatus();
-        this.rent_date = rent.getRent_date();
-        this.return_date = rent.getReturn_date();
+        this.rentDate = rent.getRentDate();
+        this.returnDate = rent.getReturnDate();
     }
 }

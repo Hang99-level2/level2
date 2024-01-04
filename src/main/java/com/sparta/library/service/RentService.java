@@ -30,6 +30,6 @@ public class RentService {
 
 
     public List<RentResponseDto> getRentById(int id) {
-        return rentRepository.findAllByUserIdOrderByRent_dateAsc(id).stream().map(RentResponseDto::new).toList();
+        return rentRepository.findAllByUserIdAndStatusOrderByRentDateAsc(id,"in").stream().map(RentResponseDto::new).toList();
     }
 }

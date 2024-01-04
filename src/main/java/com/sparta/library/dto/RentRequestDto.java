@@ -4,9 +4,9 @@ import lombok.Getter;
 
 @Getter
 public class RentRequestDto {
-    private Long user_id;
-    private Long book_id;
+    private Long userId;
+    private Long bookId;
     private String status;
-    private String rent_date;
-    private String return_date;
+    private String rentDate;
+    private String returnDate;
 }

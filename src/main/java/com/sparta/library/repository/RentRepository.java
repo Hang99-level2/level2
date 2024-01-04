@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface RentRepository extends JpaRepository<Rent, Long> {
-    List<Rent> findAllByUserIdOrderByRent_dateAsc();
+    List<Rent> findAllByUserIdAndStatusOrderByRentDateAsc(int id,String status);
+
 }
