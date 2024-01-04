@@ -16,12 +16,12 @@ public class Rent {
     private int id;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "user")
+    private int user;
 
     @OneToOne
-    @JoinColumn(name = "book_id")
-    private Book book;
+    @JoinColumn(name = "book")
+    private int book;
 
     @Column(name = "status",nullable = false)
     private String status;

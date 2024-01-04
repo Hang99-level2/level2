@@ -1,22 +1,20 @@
 package com.sparta.library.dto;
 
-import com.sparta.library.entity.Book;
 import com.sparta.library.entity.Rent;
-import com.sparta.library.entity.User;
 import lombok.Getter;
 
 @Getter
 public class RentResponseDto {
-    private User user;
-    private Book book;
-    private String status;
-    private String rentDate;
-    private String returnDate;
-    public RentResponseDto(Rent rent){
-        this.user= rent.getUser();
-        this.book= rent.getBook();
-        this.status= rent.getStatus();
-        this.rentDate= rent.getRentDate();
-        this.returnDate= rent.getReturnDate();
+
+    private String name;
+    private String phoneNumber;
+    private String title;
+    private String writer;
+
+    public RentResponseDto(Rent rent) {
+        this.name = rent.getName();
+        this.phoneNumber = rent.getPhoneNumber();
+        this.title = rent.getTitle();
+        this.writer = rent.getWriter();
     }
 }
