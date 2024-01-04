@@ -13,7 +13,7 @@ import lombok.Setter;
 public class Rent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @OneToOne
     @JoinColumn(name = "user_id")
@@ -25,19 +25,28 @@ public class Rent {
 
     @Column(name = "status",nullable = false)
     private String status;
-    @Column(name = "rent_date",nullable = false)
-    private String rent_date;
-    @Column(name = "return_date",nullable = false)
-    private String return_date;
+    @Column(name = "rentDate",nullable = false)
+    private String rentDate;
+    @Column(name = "returnDate",nullable = false)
+    private String returnDate;
 
-    public void rentbook(RentRequestDto requestDto){
+    public Rent(RentRequestDto requestDto){
+        this.user = requestDto.getUser();
+        this.book = requestDto.getBook();
         this.status = requestDto.getStatus();
-        this.rent_date = requestDto.getRent_date();
-        this.return_date = requestDto.getReturn_date();
+        this.rentDate = requestDto.getRentDate();
+        this.returnDate = requestDto.getReturnDate();
+    }
+    public void rentbook(RentRequestDto requestDto){
+        this.user = requestDto.getUser();
+        this.book = requestDto.getBook();
+        this.status = requestDto.getStatus();
+        this.rentDate = requestDto.getRentDate();
+        this.returnDate = requestDto.getReturnDate();
     }
     public void returnbook(RentRequestDto requestDto){
         this.status = requestDto.getStatus();
-        this.rent_date = requestDto.getRent_date();
-        this.return_date = requestDto.getReturn_date();
+        this.rentDate = requestDto.getRentDate();
+        this.returnDate = requestDto.getReturnDate();
     }
 }

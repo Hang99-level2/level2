@@ -1,6 +1,7 @@
 package com.sparta.library.controller;
 
 import com.sparta.library.dto.RentRequestDto;
+import com.sparta.library.dto.RentResponseDto;
 import com.sparta.library.service.RentService;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,14 +12,14 @@ public class RentController {
     public RentController(RentService rentService){
         this.rentService = rentService;
     }
-    @PutMapping("/rent/{id}")
-    public Long rentbook(@PathVariable Long id, @RequestBody RentRequestDto responseDto){
-        return rentService.rentbook(id, responseDto);
+    @PostMapping("/rent")
+    public RentResponseDto rentbook(@RequestBody RentRequestDto requestDto){
+        return rentService.rentbook(requestDto);
     }
 
     @PutMapping("/return/{id}")
-    public Long returnbook(@PathVariable Long id, @RequestBody RentRequestDto responseDto){
-        return rentService.returnbook(id, responseDto);
+    public int returnbook(@PathVariable int id, @RequestBody RentRequestDto rentRequestDto){
+        return rentService.returnbook(id, rentRequestDto);
 
     }
 }

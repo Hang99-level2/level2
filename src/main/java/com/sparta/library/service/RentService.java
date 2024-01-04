@@ -1,6 +1,7 @@
 package com.sparta.library.service;
 
 import com.sparta.library.dto.RentRequestDto;
+import com.sparta.library.dto.RentResponseDto;
 import com.sparta.library.entity.Rent;
 import com.sparta.library.repository.RentRepository;
 import jakarta.transaction.Transactional;
@@ -14,19 +15,20 @@ public class RentService {
         this.rentRepository = rentRepository;
     }
     @Transactional
-    public Long rentbook(Long id, RentRequestDto requestDto){
-        Rent rent = findRent(id);
-        rent.rentbook(requestDto);
-        return id;
+    public RentResponseDto rentbook(RentRequestDto requestDto){
+        Rent rent = new Rent(requestDto);
+        Rent saverent =rentRepository.save(rent);
+        RentResponseDto rentResponseDto = new RentResponseDto(rent);
+        return rentResponseDto;
     }
     @Transactional
-    public Long returnbook(Long id, RentRequestDto requestDto){
+    public int returnbook(int id, RentRequestDto requestDto){
         Rent rent = findRent(id);
         rent.returnbook(requestDto);
         return id;
     }
 
-    private Rent findRent(Long id){
+    private Rent findRent(int id){
         return rentRepository.findById(id).orElseThrow(()->
                 new IllegalArgumentException("선택한 메모는 존재하지 않습니다")
         );
