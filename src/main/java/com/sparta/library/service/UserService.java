@@ -20,8 +20,8 @@ public class UserService {
     }
 
 
-    public UserResponseDto createUser(UserRequestDto userrequestDto) {
-        User user = new User(userrequestDto);
+    public UserResponseDto createUser(UserRequestDto userRequestDto) {
+        User user = new User(userRequestDto);
 
         User saveUser = userRepository.save(user);
 
