@@ -12,7 +12,7 @@ import lombok.Setter;
 public class Rent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @OneToOne
     @JoinColumn(name = "user_id")
