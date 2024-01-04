@@ -1,45 +1,33 @@
 package com.sparta.library.controller;
 
-import com.sparta.library.dto.*;
-import com.sparta.library.service.BookService;
+import com.sparta.library.dto.RentRequestDto;
+import com.sparta.library.dto.RentResponseDto;
 import com.sparta.library.service.RentService;
-import com.sparta.library.service.UserService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 public class RentController {
+
     private final RentService rentService;
-    private final BookService bookService;
-    private final UserService userService;
-
-    public RentController(RentService rentService, BookService bookService, UserService userService){
+    public RentController(RentService rentService){
         this.rentService = rentService;
-        this.bookService = bookService;
-        this.userService = userService;
     }
-
-    @PostMapping("/books")
-    public BookResponseDto registerBook(@RequestBody BookRequestDto bookRequestDto) {
-        return bookService.createBook(bookRequestDto);
-    }
-
-    @PostMapping("/users")
-    public UserResponseDto registerUser(@RequestBody UserRequestDto userRequestDto) {
-        return userService.createUser(userRequestDto);
-    }
-
-
-
     @PutMapping("/rent/{id}")
-    public Long rentbook(@PathVariable Long id, @RequestBody RentRequestDto responseDto) {
-//        return rentService.rentbook(id, responseDto);
-        return null;
+    public Long rentbook(@PathVariable Long id, @RequestBody RentRequestDto responseDto){
+        return rentService.rentbook(id, responseDto);
     }
 
     @PutMapping("/return/{id}")
     public Long returnbook(@PathVariable Long id, @RequestBody RentRequestDto responseDto){
-//        return rentService.returnbook(id, responseDto);
-        return null;
+        return rentService.returnbook(id, responseDto);
+
+    }
+
+    @GetMapping("/rent/{id}")
+    public List<RentResponseDto> getRentsById(@PathVariable int id){
+        return rentService.getRentById(id);
     }
 }

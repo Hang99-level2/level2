@@ -12,19 +12,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name",nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "gender",nullable = false)
+    @Column(name = "gender", nullable = false)
     private String gender;
 
-    @Column(name = "idNumber",nullable = false)
+    @Column(name = "idNumber", nullable = false)
     private String idNumber;
 
-    @Column(name = "phoneNumber",nullable = false)
+    @Column(name = "phoneNumber", nullable = false)
     private String phoneNumber;
 
-    @Column(name = "address",nullable = false)
+    @Column(name = "address", nullable = false)
     private String address;
 
     public User(UserRequestDto userRequestDto) {
@@ -45,6 +45,5 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.address = address;
     }
-
 
 }
