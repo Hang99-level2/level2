@@ -13,7 +13,6 @@ import java.util.List;
 public class RentController {
 
     private final RentService rentService;
-
     public RentController(RentService rentService){
         this.rentService = rentService;
     }

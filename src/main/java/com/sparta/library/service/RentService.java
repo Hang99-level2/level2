@@ -17,8 +17,15 @@ public class RentService {
         this.rentRepository = rentRepository;
     }
     @Transactional
-    public Long rent_date(Long id, RentRequestDto requestDto){
+    public Long rentbook(Long id, RentRequestDto requestDto){
         Rent rent = findRent(id);
+        rent.rentbook(requestDto);
+        return id;
+    }
+    @Transactional
+    public Long returnbook(Long id, RentRequestDto requestDto){
+        Rent rent = findRent(id);
+        rent.returnbook(requestDto);
         return id;
     }
 
@@ -27,7 +34,6 @@ public class RentService {
                 new IllegalArgumentException("선택한 메모는 존재하지 않습니다")
         );
     }
-
 
     public List<RentResponseDto> getRentById(int id) {
         return rentRepository.findAllByUserIdAndStatusOrderByRentDateAsc(id,"in").stream().map(RentResponseDto::new).toList();
