@@ -11,7 +11,7 @@ public class User {
     private int id;
 
     @Column(name = "u_id",nullable = false)
-    private String user_id;
+    private String u_id;
 
     @Column(name = "password",nullable = false)
     private String password;
