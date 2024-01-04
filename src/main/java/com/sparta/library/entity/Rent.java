@@ -13,31 +13,31 @@ import lombok.Setter;
 public class Rent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
 
     @Column(name = "status",nullable = false)
     private String status;
     @Column(name = "rent_date",nullable = false)
-    private String rent_date;
+    private String rentDate;
     @Column(name = "return_date",nullable = false)
-    private String return_date;
+    private String returnDate;
 
     public void rentbook(RentRequestDto requestDto){
         this.status = requestDto.getStatus();
-        this.rent_date = requestDto.getRent_date();
-        this.return_date = requestDto.getReturn_date();
+        this.rentDate = requestDto.getRentDate();
+        this.returnDate = requestDto.getReturnDate();
     }
     public void returnbook(RentRequestDto requestDto){
         this.status = requestDto.getStatus();
-        this.rent_date = requestDto.getRent_date();
-        this.return_date = requestDto.getReturn_date();
+        this.rentDate = requestDto.getRentDate();
+        this.returnDate = requestDto.getReturnDate();
     }
 }
