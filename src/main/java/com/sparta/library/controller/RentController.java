@@ -13,13 +13,12 @@ public class RentController {
     }
     @PutMapping("/rent/{id}")
     public Long rentbook(@PathVariable Long id, @RequestBody RentRequestDto responseDto){
-//        return rentService.rentbook(id, responseDto);
-        return null;
+        return rentService.rentbook(id, responseDto);
     }
 
     @PutMapping("/return/{id}")
     public Long returnbook(@PathVariable Long id, @RequestBody RentRequestDto responseDto){
-//        return rentService.returnbook(id, responseDto);
-        return null;
+        return rentService.returnbook(id, responseDto);
+
     }
 }

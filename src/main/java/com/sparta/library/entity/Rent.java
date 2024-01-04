@@ -1,5 +1,6 @@
 package com.sparta.library.entity;
 
+import com.sparta.library.dto.RentRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,4 +29,15 @@ public class Rent {
     private String rent_date;
     @Column(name = "return_date",nullable = false)
     private String return_date;
+
+    public void rentbook(RentRequestDto requestDto){
+        this.status = requestDto.getStatus();
+        this.rent_date = requestDto.getRent_date();
+        this.return_date = requestDto.getReturn_date();
+    }
+    public void returnbook(RentRequestDto requestDto){
+        this.status = requestDto.getStatus();
+        this.rent_date = requestDto.getRent_date();
+        this.return_date = requestDto.getReturn_date();
+    }
 }
