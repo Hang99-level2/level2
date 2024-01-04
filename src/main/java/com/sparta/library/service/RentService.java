@@ -2,10 +2,14 @@ package com.sparta.library.service;
 
 import com.sparta.library.dto.RentRequestDto;
 import com.sparta.library.dto.RentResponseDto;
+import com.sparta.library.dto.renResponseDto;
 import com.sparta.library.entity.Rent;
+import com.sparta.library.entity.User;
 import com.sparta.library.repository.RentRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class RentService {
@@ -15,10 +19,10 @@ public class RentService {
         this.rentRepository = rentRepository;
     }
     @Transactional
-    public RentResponseDto rentbook(RentRequestDto requestDto){
+    public renResponseDto rentbook(RentRequestDto requestDto){
         Rent rent = new Rent(requestDto);
         Rent saverent =rentRepository.save(rent);
-        RentResponseDto rentResponseDto = new RentResponseDto(rent);
+        renResponseDto rentResponseDto = new renResponseDto(rent);
         return rentResponseDto;
     }
     @Transactional
@@ -33,4 +37,8 @@ public class RentService {
                 new IllegalArgumentException("선택한 메모는 존재하지 않습니다")
         );
     }
+
+//    public List<RentResponseDto> getRentById(int id) {
+//        return rentRepository.findAllByUserIdAndStatusOrderByRentDateAsc(id,"in").stream().map(RentResponseDto::new).toList();
+//    }
 }
