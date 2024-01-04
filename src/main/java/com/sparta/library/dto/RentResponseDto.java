@@ -16,6 +16,5 @@ public class RentResponseDto {
         this.phoneNumber = rent.getUser().getPhoneNumber();
         this.title = rent.getBook().getTitle();
         this.writer = rent.getBook().getWriter();
-
     }
 }

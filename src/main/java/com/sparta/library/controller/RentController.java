@@ -3,7 +3,6 @@ package com.sparta.library.controller;
 import com.sparta.library.dto.RentRequestDto;
 import com.sparta.library.dto.RentResponseDto;
 import com.sparta.library.service.RentService;
-import lombok.Getter;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
