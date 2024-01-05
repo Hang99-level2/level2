@@ -3,20 +3,28 @@ package com.sparta.library.service;
 import com.sparta.library.dto.RentRequestDto;
 import com.sparta.library.dto.RentResponseDto;
 import com.sparta.library.dto.renResponseDto;
+import com.sparta.library.entity.Book;
 import com.sparta.library.entity.Rent;
 import com.sparta.library.entity.User;
+import com.sparta.library.repository.BookRepository;
 import com.sparta.library.repository.RentRepository;
+import com.sparta.library.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class RentService {
     private final RentRepository rentRepository;
+    private final BookRepository bookRepository;
+    private final UserRepository userRepository;
 
-    public RentService(RentRepository rentRepository){
+    public RentService(RentRepository rentRepository, BookRepository bookRepository, UserRepository userRepository){
         this.rentRepository = rentRepository;
+        this.bookRepository = bookRepository;
+        this.userRepository = userRepository;
     }
     @Transactional
     public renResponseDto rentbook(RentRequestDto requestDto){
@@ -38,7 +46,15 @@ public class RentService {
         );
     }
 
-//    public List<RentResponseDto> getRentById(int id) {
-//        return rentRepository.findAllByUserIdAndStatusOrderByRentDateAsc(id,"in").stream().map(RentResponseDto::new).toList();
-//    }
+    public List<RentResponseDto> getRentById(int id) {
+        List<Rent> rents = rentRepository.findAllByUserAndStatusOrderByRentDateAsc(id,"out");
+        List<RentResponseDto> rentResponseDtoList = new ArrayList<>();
+        for(Rent rent : rents){
+            User user = userRepository.findById(rent.getUser()).orElseThrow();
+            Book book = bookRepository.findById(rent.getBook()).orElseThrow();
+            RentResponseDto rentResponseDto = new RentResponseDto(user,book);
+            rentResponseDtoList.add(rentResponseDto);
+        }
+        return rentResponseDtoList;
+    }
 }

@@ -1,5 +1,6 @@
 package com.sparta.library.entity;
 
+import com.sparta.library.dto.UserRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -25,4 +26,11 @@ public class User {
     @Column(name = "address",nullable = false)
     private String address;
 
+    public User(UserRequestDto userRequestDto) {
+        this.idNumber = userRequestDto.getIdNumber();
+        this.name = userRequestDto.getName();
+        this.gender = userRequestDto.getGender();
+        this.phoneNumber = userRequestDto.getPhoneNumber();
+        this.address = userRequestDto.getAddress();
+    }
 }
