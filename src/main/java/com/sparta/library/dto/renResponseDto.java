@@ -8,7 +8,6 @@ import lombok.Getter;
 @Getter
 public class renResponseDto {
 
-
     private String status;
     private String rentDate;
     private String returnDate;

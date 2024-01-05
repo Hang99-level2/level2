@@ -22,7 +22,7 @@ public class RentService {
     public renResponseDto rentbook(RentRequestDto requestDto){
         Rent rent = new Rent(requestDto);
         Rent saverent =rentRepository.save(rent);
-        renResponseDto rentResponseDto = new renResponseDto(rent);
+        renResponseDto rentResponseDto = new renResponseDto(saverent);
         return rentResponseDto;
     }
     @Transactional

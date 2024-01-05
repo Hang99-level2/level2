@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Entity
 @Getter
 @Setter
@@ -13,14 +14,12 @@ import lombok.Setter;
 public class Rent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
-    @OneToOne
-    @JoinColumn(name = "user")
+    @Column(name = "userId")
     private int user;
 
-    @OneToOne
-    @JoinColumn(name = "book")
+    @Column(name = "bookId")
     private int book;
 
     @Column(name = "status",nullable = false)
@@ -30,13 +29,14 @@ public class Rent {
     @Column(name = "returnDate",nullable = false)
     private String returnDate;
 
-    public Rent(RentRequestDto requestDto){
+    public Rent(RentRequestDto requestDto) {
         this.user = requestDto.getUser();
         this.book = requestDto.getBook();
         this.status = requestDto.getStatus();
         this.rentDate = requestDto.getRentDate();
         this.returnDate = requestDto.getReturnDate();
     }
+
     public void rentbook(RentRequestDto requestDto){
         this.user = requestDto.getUser();
         this.book = requestDto.getBook();
@@ -46,7 +46,6 @@ public class Rent {
     }
     public void returnbook(RentRequestDto requestDto){
         this.status = requestDto.getStatus();
-        this.rentDate = requestDto.getRentDate();
         this.returnDate = requestDto.getReturnDate();
     }
 }
