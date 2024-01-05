@@ -9,3 +9,5 @@
 ### 처음 설계한 DB구조
 ![image](https://github.com/Hang99-level2/level2/assets/89979849/5d203350-ef75-4f46-8441-c025f6b8ff65)
 
+### ERD
+![image](https://github.com/Hang99-level2/level2/assets/152241642/7d9e2618-7005-4203-9007-c7c8d85c4e62)
