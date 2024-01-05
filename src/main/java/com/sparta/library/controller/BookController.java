@@ -1,11 +1,12 @@
 package com.sparta.library.controller;
 
+import com.sparta.library.dto.BookRequestDto;
 import com.sparta.library.dto.BookResponseDto;
+import com.sparta.library.dto.UserRequestDto;
+import com.sparta.library.dto.UserResponseDto;
 import com.sparta.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,6 +18,11 @@ public class BookController {
 
     public BookController(BookService bookService) {
         this.bookService = bookService;
+    }
+
+    @PostMapping("/api/books")
+    public BookResponseDto createBook(@RequestBody BookRequestDto bookRequestDto) {
+        return bookService.createBook(bookRequestDto);
     }
 
     @GetMapping("/api/books")
