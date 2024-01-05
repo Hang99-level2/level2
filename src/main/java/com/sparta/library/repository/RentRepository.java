@@ -7,7 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RentRepository extends JpaRepository<Rent, Long> {
-    List<Rent> findAllByUserIdAndStatusOrderByRentDateAsc(int id,String status);
-
+public interface RentRepository extends JpaRepository<Rent, Integer> {
 }

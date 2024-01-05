@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Entity
 @Getter
 @Setter
@@ -13,31 +14,38 @@ import lombok.Setter;
 public class Rent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(name = "userId")
+    private int user;
 
-    @ManyToOne
-    @JoinColumn(name = "book_id")
-    private Book book;
+    @Column(name = "bookId")
+    private int book;
 
     @Column(name = "status",nullable = false)
     private String status;
-    @Column(name = "rent_date",nullable = false)
+    @Column(name = "rentDate",nullable = false)
     private String rentDate;
-    @Column(name = "return_date",nullable = false)
+    @Column(name = "returnDate",nullable = false)
     private String returnDate;
 
+    public Rent(RentRequestDto requestDto) {
+        this.user = requestDto.getUser();
+        this.book = requestDto.getBook();
+        this.status = requestDto.getStatus();
+        this.rentDate = requestDto.getRentDate();
+        this.returnDate = requestDto.getReturnDate();
+    }
+
     public void rentbook(RentRequestDto requestDto){
+        this.user = requestDto.getUser();
+        this.book = requestDto.getBook();
         this.status = requestDto.getStatus();
         this.rentDate = requestDto.getRentDate();
         this.returnDate = requestDto.getReturnDate();
     }
     public void returnbook(RentRequestDto requestDto){
         this.status = requestDto.getStatus();
-        this.rentDate = requestDto.getRentDate();
         this.returnDate = requestDto.getReturnDate();
     }
 }
