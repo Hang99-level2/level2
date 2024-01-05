@@ -26,8 +26,8 @@ public class RentController {
         return rentService.returnbook(id, rentRequestDto);
     }
 
-//    @GetMapping("/rent/{id}")
-//    public List<RentResponseDto> getRentsById(@PathVariable int id){
-//        return rentService.getRentById(id);
-//    }
+    @GetMapping("/rent/{id}")
+    public List<RentResponseDto> getRentsById(@PathVariable int id){
+        return rentService.getRentById(id);
+    }
 }

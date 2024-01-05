@@ -28,7 +28,7 @@ public class User {
     private String address;
 
     public User(UserRequestDto userRequestDto) {
-        this.id = userRequestDto.getId();
+
         this.name = userRequestDto.getName();
         this.gender = userRequestDto.getGender();
         this.idNumber = userRequestDto.getIdNumber();
