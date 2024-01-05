@@ -10,11 +10,9 @@ public class renResponseDto {
 
     private String status;
     private String rentDate;
-    private String returnDate;
 
     public renResponseDto(Rent rent) {
         this.status = rent.getStatus();
         this.rentDate = rent.getRentDate();
-        this.returnDate = rent.getReturnDate();
     }
 }

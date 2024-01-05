@@ -27,15 +27,15 @@ public class RentService {
         this.userRepository = userRepository;
     }
     @Transactional
-    public renResponseDto rentbook(RentRequestDto requestDto){
+    public renResponseDto RentBook(RentRequestDto requestDto){
         Rent rent = new Rent(requestDto);
         Rent saverent =rentRepository.save(rent);
         return new renResponseDto(saverent);
     }
     @Transactional
-    public int returnbook(int id, RentRequestDto requestDto){
+    public int ReturnBook(int id, RentRequestDto requestDto){
         Rent rent = findRent(id);
-        rent.returnbook(requestDto);
+        rent.ReturnBook(requestDto);
         return id;
     }
 

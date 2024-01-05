@@ -26,7 +26,7 @@ public class Rent {
     private String status;
     @Column(name = "rentDate",nullable = false)
     private String rentDate;
-    @Column(name = "returnDate",nullable = false)
+    @Column(name = "returnDate")
     private String returnDate;
 
     public Rent(RentRequestDto requestDto) {
@@ -34,17 +34,16 @@ public class Rent {
         this.book = requestDto.getBook();
         this.status = requestDto.getStatus();
         this.rentDate = requestDto.getRentDate();
-        this.returnDate = requestDto.getReturnDate();
     }
 
-    public void rentbook(RentRequestDto requestDto){
+    public void RentBook(RentRequestDto requestDto){
         this.user = requestDto.getUser();
         this.book = requestDto.getBook();
         this.status = requestDto.getStatus();
         this.rentDate = requestDto.getRentDate();
         this.returnDate = requestDto.getReturnDate();
     }
-    public void returnbook(RentRequestDto requestDto){
+    public void ReturnBook(RentRequestDto requestDto){
         this.status = requestDto.getStatus();
         this.returnDate = requestDto.getReturnDate();
     }

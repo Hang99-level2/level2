@@ -17,13 +17,13 @@ public class RentController {
         this.rentService = rentService;
     }
     @PostMapping("/rent")
-    public renResponseDto rentbook(@RequestBody RentRequestDto requestDto){
-        return rentService.rentbook(requestDto);
+    public renResponseDto RentBook(@RequestBody RentRequestDto requestDto){
+        return rentService.RentBook(requestDto);
     }
 
     @PutMapping("/return/{id}")
-    public int returnbook(@PathVariable int id, @RequestBody RentRequestDto rentRequestDto){
-        return rentService.returnbook(id, rentRequestDto);
+    public int ReturnBook(@PathVariable int id, @RequestBody RentRequestDto rentRequestDto){
+        return rentService.ReturnBook(id, rentRequestDto);
     }
 
     @GetMapping("/rent/{id}")
