@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 @Service
 public class RentService {
     private final RentRepository rentRepository;
@@ -19,7 +18,6 @@ public class RentService {
     public RentService(RentRepository rentRepository){
         this.rentRepository = rentRepository;
     }
-
     @Transactional
     public renResponseDto rentbook(RentRequestDto requestDto){
         Rent rent = new Rent(requestDto);
