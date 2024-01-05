@@ -30,8 +30,7 @@ public class RentService {
     public renResponseDto rentbook(RentRequestDto requestDto){
         Rent rent = new Rent(requestDto);
         Rent saverent =rentRepository.save(rent);
-        renResponseDto rentResponseDto = new renResponseDto(saverent);
-        return rentResponseDto;
+        return new renResponseDto(saverent);
     }
     @Transactional
     public int returnbook(int id, RentRequestDto requestDto){
@@ -39,6 +38,7 @@ public class RentService {
         rent.returnbook(requestDto);
         return id;
     }
+
 
     private Rent findRent(int id){
         return rentRepository.findById(id).orElseThrow(()->
